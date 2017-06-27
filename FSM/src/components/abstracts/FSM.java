@@ -56,7 +56,7 @@ public abstract class FSM implements Observer,Serializable{
 			
 		}
 	}
-	//Saves the machine to an object file 
+	//Saves the machine to an object file - should have wrote a more general function ! mistake 1.
 	public void saveAsObject(OutputStream out){
 		FSMSaver saver = new FSMObjectSaver();
 		saver.saveFSM(this, out);
@@ -158,7 +158,7 @@ public abstract class FSM implements Observer,Serializable{
 			currentState = state;
 		}
 		
-		else if(!states.containsKey(state.getName())){
+		if(!states.containsKey(state.getName())){
 			states.put(state.getName(),state);
 			currentState = state;
 		}
@@ -172,6 +172,7 @@ public abstract class FSM implements Observer,Serializable{
 		
 		 //check if this event completes a sequence the machine knows, if so go to the specified state.
 		 //if the specified state is null the machine will remain in the current state.	
+		//should not return to previous state ! error2.
 		State temp = currentState;
 		for(Sequence s : sequences){
 			if(s.hasAccurred(eventHistory)){

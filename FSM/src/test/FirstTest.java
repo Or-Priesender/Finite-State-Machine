@@ -127,7 +127,7 @@ public class FirstTest {
 		try {
 			machine.saveAsObject(new FileOutputStream("machine.obj"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
